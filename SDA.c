@@ -31,7 +31,7 @@ void HapusKota(Kota daftarKota[], int *jumlahKota, const char *namaKota) {
 void TampilkanWarga(Kota daftarKota[], int jumlahKota, const char *namaKota) {
     for (int i = 0; i < jumlahKota; i++) {
         if (strcmp(daftarKota[i].NamaKota, namaKota) == 0) {
-            printf("Warga di kota %s:\n", namaKota);
+            printf("\nWarga di kota %s:\n", namaKota);
             DataWarga *curr = daftarKota[i].nextWarga;
             if (curr == NULL) {
                 printf("  Tidak ada warga\n");

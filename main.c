@@ -43,7 +43,7 @@ int main() {
                 break;
 
             case 4:
-                printf("Masukkan nama kota: ");
+                printf("\nMasukkan nama kota: ");
                 fgets(namaKota, MAX_NAMA, stdin);
                 namaKota[strcspn(namaKota, "\n")] = 0;
                 TampilkanWarga(daftarKota, jumlahKota, namaKota);
