@@ -14,3 +14,10 @@ typedef struct DataWarga{
     char namaWarga[MAX_NAMA];
     struct DataWarga *next;
 } DataWarga;
+
+void HapusSemuaWarga(Kota *kota);
+void HapusKota(Kota daftarKota[], int *jumlahKota, const char *namaKota);
+void TampilkanWarga(Kota daftarKota[], int jumlahKota, const char *namaKota);
+void TampilkanSemua(Kota daftarKota[], int jumlahKota);
+
+#endif
