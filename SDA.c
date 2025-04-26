@@ -46,3 +46,22 @@ void TampilkanWarga(Kota daftarKota[], int jumlahKota, const char *namaKota) {
     printf("Kota '%s' tidak ditemukan.\n", namaKota);
 }
 
+void TampilkanSemua(Kota daftarKota[], int jumlahKota) {
+    if (jumlahKota == 0) {
+        printf("Belum ada kota.\n");
+        return;
+    }
+
+    for (int i = 0; i < jumlahKota; i++) {
+        printf("Kota: %s\n", daftarKota[i].NamaKota);
+        DataWarga *curr = daftarKota[i].nextWarga;
+        if (curr == NULL) {
+            printf("  Tidak ada warga\n");
+        } else {
+            while (curr != NULL) {
+                printf("  - %s\n", curr->namaWarga);
+                curr = curr->next;
+            }
+        }
+    }
+}
