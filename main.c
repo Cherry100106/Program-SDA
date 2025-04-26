@@ -12,9 +12,10 @@ int main() {
         printf("1. Tambah Kota\n");
         printf("2. Tambah Warga\n");
         printf("3. Tampilkan Semua Kota dan Warga\n");
-        printf("4. Hapus Warga\n");
-        printf("5. Hapus Kota\n");
-        printf("6. Keluar\n");
+        printf("4. Tampilkan warga dalam 1 kota\n");
+        printf("5. Hapus Warga\n");
+        printf("6. Hapus Kota\n");
+        printf("7. Keluar\n");
         printf("Pilih menu: ");
         scanf("%d", &pilihan);
         getchar();
@@ -40,8 +41,15 @@ int main() {
             case 3:
                 TampilkanSemua(daftarKota, jumlahKota);
                 break;
-                
+
             case 4:
+                printf("Masukkan nama kota: ");
+                fgets(namaKota, MAX_NAMA, stdin);
+                namaKota[strcspn(namaKota, "\n")] = 0;
+                TampilkanWarga(daftarKota, jumlahKota, namaKota);
+                break;
+                
+            case 5:
                 printf("\nMasukkan nama kota tempat tinggal warga: ");
                 fgets(namaKota, MAX_NAMA, stdin);
                 namaKota[strcspn(namaKota, "\n")] = 0;
@@ -51,14 +59,14 @@ int main() {
                 HapusWargaDariKota(daftarKota, jumlahKota, namaKota, namaWarga);
                 break;
                 
-            case 5:
+            case 6:
                 printf("\nMasukkan nama kota yang mau dihapus: ");
                 fgets(namaKota, MAX_NAMA, stdin);
                 namaKota[strcspn(namaKota, "\n")] = 0;
                 HapusKota(daftarKota, &jumlahKota, namaKota);
                 break;
                 
-            case 6:
+            case 7:
                 printf("Keluar dari program.\n");
                 return 0;
                 
