@@ -65,3 +65,82 @@ void TampilkanSemua(Kota daftarKota[], int jumlahKota) {
         }
     }
 }
+
+DataWarga* BuatWargaBaru(const char *namaWarga) {
+    DataWarga *newWarga = (DataWarga*)malloc(sizeof(DataWarga));
+    if (newWarga == NULL) {
+        printf("Gagal alokasi memori untuk warga baru!\n");
+        return NULL;
+    }
+    strcpy(newWarga->namaWarga, namaWarga);
+    newWarga->next = NULL;
+    return newWarga;
+}
+
+void TambahWarga(Kota *kota, const char *namaWarga) {
+    DataWarga *newWarga = BuatWargaBaru(namaWarga);
+    if (newWarga == NULL) return;
+
+    if (kota->nextWarga == NULL) {
+        kota->nextWarga = newWarga;
+    } else {
+        DataWarga *curr = kota->nextWarga;
+        while (curr->next != NULL) {
+            curr = curr->next;
+        }
+        curr->next = newWarga;
+    }
+    printf("Warga '%s' berhasil ditambahkan ke kota '%s'.\n", namaWarga, kota->NamaKota);
+}
+
+void TambahWargaKeKota(Kota daftarKota[], int jumlahKota, const char *namaKota, const char *namaWarga) {
+    for (int i = 0; i < jumlahKota; i++) {
+        if (strcmp(daftarKota[i].NamaKota, namaKota) == 0) {
+            TambahWarga(&daftarKota[i], namaWarga);
+            return;
+        }
+    }
+    printf("Kota '%s' tidak ditemukan.\n", namaKota);
+}
+
+void EntryData(Kota daftarKota[], int *jumlahKota, const char *namaKota) {
+    if (*jumlahKota >= MAX_KOTA) {
+        printf("Jumlah kota sudah mencapai batas maksimal!\n");
+        return;
+    }
+    strcpy(daftarKota[*jumlahKota].NamaKota, namaKota);
+    daftarKota[*jumlahKota].nextWarga = NULL;
+    (*jumlahKota)++;
+    printf("Kota '%s' berhasil dimasukkan ke daftar.\n", namaKota);
+}
+
+void HapusWarga(Kota *kota, const char *namaWarga) {
+    DataWarga *curr = kota->nextWarga;
+    DataWarga *prev = NULL;
+    
+    while (curr != NULL) {
+        if (strcmp(curr->namaWarga, namaWarga) == 0) {
+            if (prev == NULL) {
+                kota->nextWarga = curr->next;
+            } else {
+                prev->next = curr->next;
+            }
+            free(curr);
+            printf("Warga '%s' berhasil dihapus dari kota '%s'.\n", namaWarga, kota->NamaKota);
+            return;
+        }
+        prev = curr;
+        curr = curr->next;
+    }
+    printf("Warga '%s' tidak ditemukan di kota '%s'.\n", namaWarga, kota->NamaKota);
+}
+
+void HapusWargaDariKota(Kota daftarKota[], int jumlahKota, const char *namaKota, const char *namaWarga) {
+    for (int i = 0; i < jumlahKota; i++) {
+        if (strcmp(daftarKota[i].NamaKota, namaKota) == 0) {
+            HapusWarga(&daftarKota[i], namaWarga);
+            return;
+        }
+    }
+    printf("Kota '%s' tidak ditemukan.\n", namaKota);
+}
