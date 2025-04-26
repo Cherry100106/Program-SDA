@@ -21,11 +21,11 @@ void HapusKota(Kota daftarKota[], int *jumlahKota, const char *namaKota) {
             }
             (*jumlahKota)--;
 
-            printf("Kota '%s' dan seluruh warganya berhasil dihapus.\n", namaKota);
+            printf("\nKota '%s' dan seluruh warganya berhasil dihapus.\n", namaKota);
             return;
         }
     }
-    printf("Kota '%s' tidak ditemukan.\n", namaKota);
+    printf("\nKota '%s' tidak ditemukan.\n", namaKota);
 }
 
 void TampilkanWarga(Kota daftarKota[], int jumlahKota, const char *namaKota) {
@@ -43,17 +43,17 @@ void TampilkanWarga(Kota daftarKota[], int jumlahKota, const char *namaKota) {
             return;
         }
     }
-    printf("Kota '%s' tidak ditemukan.\n", namaKota);
+    printf("\nKota '%s' tidak ditemukan.\n", namaKota);
 }
 
 void TampilkanSemua(Kota daftarKota[], int jumlahKota) {
     if (jumlahKota == 0) {
-        printf("Belum ada kota.\n");
+        printf("\nBelum ada kota.\n");
         return;
     }
 
     for (int i = 0; i < jumlahKota; i++) {
-        printf("Kota: %s\n", daftarKota[i].NamaKota);
+        printf("\nKota: %s\n", daftarKota[i].NamaKota);
         DataWarga *curr = daftarKota[i].nextWarga;
         if (curr == NULL) {
             printf("  Tidak ada warga\n");
@@ -90,7 +90,7 @@ void TambahWarga(Kota *kota, const char *namaWarga) {
         }
         curr->next = newWarga;
     }
-    printf("Warga '%s' berhasil ditambahkan ke kota '%s'.\n", namaWarga, kota->NamaKota);
+    printf("\nWarga '%s' berhasil ditambahkan ke kota '%s'.\n", namaWarga, kota->NamaKota);
 }
 
 void TambahWargaKeKota(Kota daftarKota[], int jumlahKota, const char *namaKota, const char *namaWarga) {
@@ -100,7 +100,7 @@ void TambahWargaKeKota(Kota daftarKota[], int jumlahKota, const char *namaKota, 
             return;
         }
     }
-    printf("Kota '%s' tidak ditemukan.\n", namaKota);
+    printf("\nKota '%s' tidak ditemukan.\n", namaKota);
 }
 
 void EntryData(Kota daftarKota[], int *jumlahKota, const char *namaKota) {
@@ -111,7 +111,7 @@ void EntryData(Kota daftarKota[], int *jumlahKota, const char *namaKota) {
     strcpy(daftarKota[*jumlahKota].NamaKota, namaKota);
     daftarKota[*jumlahKota].nextWarga = NULL;
     (*jumlahKota)++;
-    printf("Kota '%s' berhasil dimasukkan ke daftar.\n", namaKota);
+    printf("\nKota '%s' berhasil dimasukkan ke daftar.\n", namaKota);
 }
 
 void HapusWarga(Kota *kota, const char *namaWarga) {
@@ -126,13 +126,13 @@ void HapusWarga(Kota *kota, const char *namaWarga) {
                 prev->next = curr->next;
             }
             free(curr);
-            printf("Warga '%s' berhasil dihapus dari kota '%s'.\n", namaWarga, kota->NamaKota);
+            printf("\nWarga '%s' berhasil dihapus dari kota '%s'.\n", namaWarga, kota->NamaKota);
             return;
         }
         prev = curr;
         curr = curr->next;
     }
-    printf("Warga '%s' tidak ditemukan di kota '%s'.\n", namaWarga, kota->NamaKota);
+    printf("\nWarga '%s' tidak ditemukan di kota '%s'.\n", namaWarga, kota->NamaKota);
 }
 
 void HapusWargaDariKota(Kota daftarKota[], int jumlahKota, const char *namaKota, const char *namaWarga) {
@@ -142,5 +142,5 @@ void HapusWargaDariKota(Kota daftarKota[], int jumlahKota, const char *namaKota,
             return;
         }
     }
-    printf("Kota '%s' tidak ditemukan.\n", namaKota);
+    printf("\nKota '%s' tidak ditemukan.\n", namaKota);
 }

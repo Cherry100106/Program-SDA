@@ -21,14 +21,14 @@ int main() {
 
         switch (pilihan) {
             case 1:
-                printf("Masukkan nama kota: ");
+                printf("\nMasukkan nama kota: ");
                 fgets(namaKota, MAX_NAMA, stdin);
                 namaKota[strcspn(namaKota, "\n")] = 0;
                 EntryData(daftarKota, &jumlahKota, namaKota);
                 break;
                 
             case 2:
-                printf("Masukkan nama kota: ");
+                printf("\nMasukkan nama kota: ");
                 fgets(namaKota, MAX_NAMA, stdin);
                 namaKota[strcspn(namaKota, "\n")] = 0;
                 printf("Masukkan nama warga: ");
@@ -42,7 +42,7 @@ int main() {
                 break;
                 
             case 4:
-                printf("Masukkan nama kota tempat tinggal warga: ");
+                printf("\nMasukkan nama kota tempat tinggal warga: ");
                 fgets(namaKota, MAX_NAMA, stdin);
                 namaKota[strcspn(namaKota, "\n")] = 0;
                 printf("Masukkan nama warga yang akan dihapus: ");
@@ -52,7 +52,7 @@ int main() {
                 break;
                 
             case 5:
-                printf("Masukkan nama kota yang mau dihapus: ");
+                printf("\nMasukkan nama kota yang mau dihapus: ");
                 fgets(namaKota, MAX_NAMA, stdin);
                 namaKota[strcspn(namaKota, "\n")] = 0;
                 HapusKota(daftarKota, &jumlahKota, namaKota);
