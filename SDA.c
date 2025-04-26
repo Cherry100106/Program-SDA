@@ -1,4 +1,4 @@
-#include sda.h
+#include "sda.h"
 
 void HapusSemuaWarga(Kota *kota) {
     DataWarga *curr = kota->nextWarga;
