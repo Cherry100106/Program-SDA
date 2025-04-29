@@ -1,13 +1,13 @@
 #ifndef nbtrees_h
 #define nbtrees_h
-#include "boolean.h"
+#include "BOOLEAN.H"
 //Maksimal node yang dapat ditampung dalam array
 #define jml_maks 20
 //Arah traversal
 #define kebawah 1
 #define keatas 2
 #define kekanan 3
-#define nil 0
+#define nil -1
 /***************************/
 /* Type data */
 /***************************/
@@ -18,7 +18,7 @@ typedef char infotype;
 typedef int address;
 typedef struct { 
 	infotype info;
-	address ps_fs, ps_nb, ps_pr;
+	address FirstSon, NextBrother, Parent;
 }nbtree;
 
 typedef nbtree Isi_Tree[jml_maks+1];
@@ -28,10 +28,8 @@ typedef nbtree Isi_Tree[jml_maks+1];
 /***************************/
 void Create_tree(Isi_Tree X, int Jml_Node);
 // Create Non Binary Tree sebanyak Jml_Node
-// Tujuan mengentrykan Non Binary Tree ke array Isi_Tree dengan pola
-Level Order
-// Jml Node adalah banyaknya elemen dalam Tree yang menjadi parameter
-input
+// Tujuan mengentrykan Non Binary Tree ke array Isi_Tree dengan pola Level Order
+// Jml Node adalah banyaknya elemen dalam Tree yang menjadi parameter input
 
 boolean IsEmpty (Isi_Tree P);
 /* Mengirimkan true jika Isi_Tree KOSONG */
