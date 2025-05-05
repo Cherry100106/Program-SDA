@@ -2,7 +2,7 @@
 #define nbtrees_h
 #include "BOOLEAN.H"
 //Maksimal node yang dapat ditampung dalam array
-#define jml_maks 20
+#define jml_maks 10
 //Arah traversal
 #define kebawah 1
 #define keatas 2
@@ -50,7 +50,7 @@ void PostOrder (Isi_Tree P);
 /* IS : P terdefinisi */
 /* FS : Semua simpul P sudah ditampilkan secara PostOrder : fs, nb,
 Parent */
-void Level_order(Isi_Tree X, int Maks_node);
+void LevelOrder(Isi_Tree X, int Maks_node);
 /* Traversal LevelOrder */
 /* IS : P terdefinisi */
 /* FS : Semua simpul P sudah ditampilkan secara Level Order */
@@ -77,4 +77,8 @@ int Max (infotype Data1, infotype Data2);
 int Root(Isi_Tree P);
 // fungsi untuk mencari indeks akar
 void InOrderRek(Isi_Tree P, int idx);
+void PreOrderRek(Isi_Tree P, int idx);
+void PostOrderRek(Isi_Tree P, int idx);
+int DepthRek(Isi_Tree P, int idx);
+
 #endif
