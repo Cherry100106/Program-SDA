@@ -41,7 +41,7 @@ void Create_tree(Isi_Tree X, int Jml_Node){
 
     //Index 6
     X[6].info='F';
-    X[6].FirstSon=0;
+    X[6].FirstSon=-1;
     X[6].NextBrother=7;
     X[6].Parent=3;
 
@@ -71,7 +71,7 @@ void Create_tree(Isi_Tree X, int Jml_Node){
 }
 
 boolean IsEmpty (Isi_Tree P){
-    return P[0].info == '\0';
+    return Root(P) == -1;
 }
 
 void PrintTree (Isi_Tree P){
@@ -100,13 +100,13 @@ int Root(Isi_Tree P) {
 
 
 void InOrderRek(Isi_Tree P, int idx){
-    if (idx == - 1) return;
+    if (idx == - 1 || idx < 1 || idx > jml_maks) return;
     int child = P[idx].FirstSon;
     if (child != -1){
         InOrderRek(P, child);
     }
     printf("%c", P[idx].info);
-
+    child = P[idx].FirstSon;
     if (child != -1){
         child = P[child].NextBrother;
         while (child != -1){
@@ -142,7 +142,7 @@ int nbElmt(Isi_Tree P) {
 int nbDaun(Isi_Tree P){
     int daun = 0;
     for (int i = 1; i <= jml_maks; i++){
-        if (P[i].info != 0 && P[i].FirstSon == -1)daun++;
+        if (P[i].info != '\0' && P[i].FirstSon == -1)daun++;
     }
     return daun;
 }
@@ -156,12 +156,19 @@ void LevelOrder(Isi_Tree P, int Maks_node) {
 
     queue[rear++] = root;
 
-    while (front < rear) {
+    while (front < rear && rear <= jml_maks) {
         int curr = queue[front++];
+        if (curr < 1 || curr > jml_maks) {
+            printf("Error: Invalid curr index %d\n", curr);
+            return;
+        }
         printf("%c ", P[curr].info);
-
         int child = P[curr].FirstSon;
-        while (child != -1) {
+        while (child != -1 && rear < jml_maks) {
+            if (child < 1 || child > jml_maks) {
+                printf("Error: Invalid child index %d\n", child);
+                return;
+            }
             queue[rear++] = child;
             child = P[child].NextBrother;
         }
@@ -217,7 +224,7 @@ int Level(Isi_Tree P, infotype X){
     int front = 0, rear = 0;
 
     int root = Root(P);
-    if (root == 0) return 0;
+    if (root == -1) return 0;
 
     queue[rear] = root;
     level[rear++] = 0;
