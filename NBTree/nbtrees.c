@@ -219,7 +219,7 @@ void PostOrder(Isi_Tree P){
     printf("\n");
 }
 
-int Level(Isi_Tree P, infotype X){
+int Level(Isi_Tree P, infotype X) {
     int queue[jml_maks], level[jml_maks];
     int front = 0, rear = 0;
 
@@ -229,23 +229,29 @@ int Level(Isi_Tree P, infotype X){
     queue[rear] = root;
     level[rear++] = 0;
 
-    while (front < rear){
-        int curr = queue[front];
-        int curr_level = level[front];
-        front++;
+    while (front < rear) {
+        int curr = queue[front++];
+        if (curr < 1 || curr > jml_maks) {
+            printf("Error: Invalid curr index %d\n", curr);
+            return 0;
+        }
 
-        if (P[curr].info == X){
-            return curr_level;
+        if (P[curr].info == X) {
+            return level[front - 1]; 
         }
 
         int child = P[curr].FirstSon;
-        while (child != 0){
+        while (child != -1 && rear < jml_maks) {
+            if (child < 1 || child > jml_maks) {
+                printf("Error: Invalid child index %d\n", child);
+                return 0;
+            }
             queue[rear] = child;
-            level[rear++] = curr_level + 1;
+            level[rear++] = level[front - 1] + 1; 
             child = P[child].NextBrother;
         }
     }
-    return 0;
+    return 0; 
 }
 
 int DepthRek(Isi_Tree P, int idx){
